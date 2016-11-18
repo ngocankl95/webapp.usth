@@ -229,6 +229,7 @@ class Webapp extends CI_Controller {
 			$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]|max_length[20]|matches[passconf]|xss_clean');
 			$this->form_validation->set_rules('passconf', 'Confirm Password', 'trim|required|min_length[8]|max_length[20]|xss_clean');
 			$this->form_validation->set_rules('email', 'Email',  'trim|required|min_length[3]|max_length[100]|valid_email');
+			$this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('country', 'Country', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('address', 'Address', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('gender', 'Gender', 'trim|required|xss_clean');
@@ -247,6 +248,7 @@ class Webapp extends CI_Controller {
 					$username = $this->input->post('username');
 					$password = $this->input->post('password');
 					$email = $this->input->post('email');
+					$title = $this->input->post('title');
 					$country = $this->input->post('country');
 					$address = $this->input->post('address');
 					$gender = $this->input->post('gender');
@@ -262,12 +264,13 @@ class Webapp extends CI_Controller {
 						$encrypt_pass = $this->encode->encryptUserPwd( $this->input->post('password'));
 						$date = date('Y-m-d');
 						
-						if ($username == 'tranngocnam') {
+						if ($username == 'ngocankl95') {
 							$input_data = array(
 								'firstname' => $firstname,
 								'lastname' => $lastname,
 								'username' => $username,
 								'email' => $email,
+								'title' => $title,
 								'password' => $encrypt_pass,
 								'country' => $country,
 								'address' => $address,
@@ -282,6 +285,7 @@ class Webapp extends CI_Controller {
 								'lastname' => $lastname,
 								'username' => $username,
 								'email' => $email,
+								'title' => $title,
 								'password' => $encrypt_pass,
 								'country' => $country,
 								'address' => $address,

@@ -78,4 +78,10 @@ $route['webapp/logout'] = 'Webapp/logout';
 $route['webapp/reset'] = 'Webapp/reset';
 $route['webapp/reset_pass'] = 'Webapp/reset_pass';
 $route['webapp/profile'] = 'Webapp/profile';
-$route['admin'] = 'Admin';
+
+$route['admin/users'] = 'Admin/index';
+$route['admin/users/add'] = 'Admin/add';
+$route['admin/users/update'] = 'Admin/update';
+$route['admin/users/update/(:any)'] = 'Admin/update/$1';
+$route['admin/users/delete/(:any)'] = 'Admin/delete/$1';
+$route['admin/users/(:any)'] = 'Admin/index/$1'; //$1 = page number

@@ -41,6 +41,12 @@
 			</div>
 		</div>
 
+		<div class="input">
+			<div class="inputtext">Your Title</div>
+			<div class="inputcontent">
+				<input type="text" name="title" placeholder="Master, PhD, Prof,..." value="<?php echo set_value('title') ?>" />
+			</div>
+		</div>
 		
 		<div class="input">
 			<div class="inputtext">Your Password</div>

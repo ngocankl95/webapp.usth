@@ -75,11 +75,12 @@
 		<div style="margin-top: 20px">You are logged in your profile <br/> <br/> <a href="<?php echo base_url('webapp/logout') ?>"> Click here </a> to logout</div>
 		
 		<?php
-			if ($this->user_manager->is_this_admin()){
-				echo '<a href="'. base_url().'webapp/edit_profile/'.$username.'">Edit this persons profile</a>';
-			} 
+			 
+			if ($this->user_manager->is_this_admin()) {
+				echo '<a href="'. base_url().'webapp/edit_profile/'.$username.'">Edit this persons Profile</a>';
+			}
 			elseif ($this->user_manager->this_user_name() == $username){
-				echo '<a href="'. base_url().'webapp/edit_profile">Edit Profile</a>';
+				echo '<a href="'. base_url().'webapp/edit_profile/">Edit Profile</a>';
 			}
 		?>
 	</div>

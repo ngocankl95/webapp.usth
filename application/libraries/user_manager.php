@@ -59,7 +59,7 @@ class User_manager {
 	public function is_this_admin(){
 		$CI =& get_instance();
 		
-		if($CI->user_management->get_user_lvl($this->this_user_name()) != '0'){
+		if($CI->user_management->get_user_lvl($this->this_user_name()) == 1){
 			return true;
 		}else{
 			return false;

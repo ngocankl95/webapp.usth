@@ -186,6 +186,46 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                return $query->result_array();
           }
 
+          public function get_users($user_id=null, $title=null, $order=null, $order_type='Asc', $limit_start, $limit_end)
+          {
+         
+               $this->db->select('ID');
+               $this->db->select('username');
+               $this->db->select('firstname');
+               $this->db->select('lastname');
+               $this->db->select('title');
+               $this->db->select('email');
+               $this->db->select('gender');
+               $this->db->select('country');
+               $this->db->select('address');
+               $this->db->from('users');
+               if($user_id != null && $user_id != 0){
+                    $this->db->where('ID', $user_id);
+               }
+               if($title){
+                    $this->db->where('title', $title);
+               }
+
+               // $this->db->join('manufacturers', 'products.user_id = manufacturers.id', 'left');
+
+               $this->db->group_by('title');
+
+               // if($order){
+               //      $this->db->order_by($order, $order_type);
+               // }else{
+               //      $this->db->order_by('id', $order_type);
+               // }
+
+
+               $this->db->limit($limit_start, $limit_end);
+               //$this->db->limit('4', '4');
+
+
+               $query = $this->db->get();
+               
+               return $query->result_array();     
+          }
+
           /*
           CHECK users from database
           */
@@ -256,6 +296,28 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                }else{
                     return false;
                }
+          }
+
+          /*
+          COUNT the number of users
+          */
+          function count_products($user_id=null, $title=null)
+          {
+               $this->db->select('*');
+               $this->db->from('users');
+               if($user_id != null && $user_id != 0){
+                    $this->db->where('ID', $user_id);
+               }
+               if($title){
+                    $this->db->where('title', $title);
+               }
+               // if($order){
+               //      $this->db->order_by($order, 'Asc');
+               // }else{
+               //     $this->db->order_by('id', 'Asc');
+               // }
+               $query = $this->db->get();
+               return $query->num_rows();
           }
 
           /*
